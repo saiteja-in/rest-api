@@ -8,23 +8,11 @@ const {
   handleCreateNewUser,
 } = require("../controllers/user");
 
-// router.get("/users", async (req, res) => {
-//   const allDbUsers = await User.find({});
-//   const html = `
-//       <ul>
-//           ${allDbUsers.map((user) => `<li>${user.email}</li>`).join("")}
-//       </ul>
-//       `;
-//   res.send(html);
-// });
-
-router.get("/", handleGetAllUsers);
+router.route("/").get(handleGetAllUsers).post(handleCreateNewUser);
 router
   .route("/:id")
   .get(handlegetUserById)
   .patch(handleUpdateUserById)
   .delete(handleDelelteUserById);
 
-router.post("/", handleCreateNewUser);
-
-module.exports = router
+module.exports = router;

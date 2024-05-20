@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(logReqRes)
 
-app.use('/user',userRouter)
+app.use('/users',userRouter)
 
 app.listen(port, () => {
   console.log("is it working");
