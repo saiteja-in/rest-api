@@ -1,7 +1,6 @@
 const express = require("express");
 const fs = require("fs");
 const app = express();
-// const users = require("./MOCK_DATA.json");
 const port = 8000;
 const mongoose = require("mongoose");
 
@@ -87,8 +86,6 @@ app.post("/api/users", async (req, res) => {
   ) {
     return res.status(400).json({ status: "all fields are required" });
   }
-  // const newUser = { id: users.length + 1, ...body };
-  // users.push(newUser);
   const result = await User.create({
     firstName: body.first_name,
     lastName: body.last_name,
@@ -99,17 +96,6 @@ app.post("/api/users", async (req, res) => {
   console.log(result);
   return res.status(201).json({ msg: "success" });
 });
-// app.get('/api/users/:id',(req,res)=>{
-//     const id=Number(req.params.id);
-//     const user=users.find((user)=>user.id===id);
-//     return res.json(user)
-// })
-// app.patch('/api/users/:id',(req,res)=>{                //as these three routes are same we can reformat into the above one
-//     return res.json({status:"pending"})
-// })
-// app.delete('/api/users/:id',(req,res)=>{
-//     return res.json({status:"pending"})
-// })
 
 app.listen(port, () => {
   console.log("is it working");
